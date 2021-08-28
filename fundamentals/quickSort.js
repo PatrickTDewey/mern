@@ -2,7 +2,6 @@ let myArray = [1, 2, 9, 600, 5, 8, 9000, -2, 6, 4, 3, 10, 70, 300];
 
 const partition = (array, left, right) => {
     let pivot = array[Math.floor(Math.random() * (right - left) + 1) + left]; // random number between 0 - arr.length
-    console.log(pivot);
     while (left < right) {
         while (array[left] < pivot) {
             left++;
