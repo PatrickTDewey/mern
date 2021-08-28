@@ -1,28 +1,22 @@
-let myArray = [1, 2, 9, 600, 5, 8, 6, 4, 3, 10, 70, 300];
+let myArray = [1, 2, 9, 600, 5, 8, 9000, -2, 6, 4, 3, 10, 70, 300];
 
 const partition = (array, left, right) => {
     let pivot = array[Math.floor(Math.random() * (right - left) + 1) + left]; // random number between 0 - arr.length
     console.log(pivot);
-    if (left >= right) {
-        return right
-    }
-    while (left != right) {
+    while (left < right) {
         while (array[left] < pivot) {
             left++;
         }
         while (array[right] > pivot) {
             right--;
         }
-
         let temp = array[left];
         array[left] = array[right]
         array[right] = temp;
-
     }
     return right;
 }
-// console.log(partition(myArray));
-// console.log(myArray);
+
 
 const quickSort = (array, left = 0, right = array.length - 1) => {
     let pivot = partition(array, left, right);
