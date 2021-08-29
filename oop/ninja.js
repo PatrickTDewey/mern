@@ -39,4 +39,4 @@ ninja1.showStats();
 ninja1.drinkSake();
 ninja1.showStats();
 const sensei1 = new Sensei('Splinter')
-console.log(sensei1.speakWisdom(), sensei1.showStats());
+console.log(sensei1.speakWisdom(), sensei1.showStats(), sensei1.sayName());
