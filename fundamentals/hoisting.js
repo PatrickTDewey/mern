@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 // var foo = "bar";
 // function magic(){
 //     foo = "hello world";
@@ -20,18 +21,18 @@
 // example = "I'm the example"
 
 // console.log(example);
-// let example = "I'm the example!";  
+// let example = "I'm the example!";
 // ReferenceError
 
-// console.log(hello);                                   
-// var hello = 'world';    
+// console.log(hello);
+// var hello = 'world';
 
 // var hello;
 // console.log(hello)
 // hello = 'world';
 // var needle;
 // needle = 'haystack';
-// test(); 
+// test();
 // function test(){
 //     var needle = 'magnet'; // var already declared
 //     console.log(needle);
@@ -50,11 +51,11 @@
 //     brendan = 'only okay';
 //     console.log(brendan);
 // }
-// console.log(brendan); 
+// console.log(brendan);
 // super cool
 // var food;
 // food = 'chicken'
-// console.log(food); 
+// console.log(food);
 // eat();
 // function eat(){
 //     var food;
@@ -104,7 +105,7 @@
 //     console.log(dojo);
 // }
 // console.log(dojo);
-// san jose 
+// san jose
 // seattle
 // burbank
 // sanjose
@@ -127,10 +128,10 @@
 // Output
 // cant reassign dojo
 
-console.log(add(2,3));
-function add(a, b) {
-    return a + b;
-}
-const add; // undefined
-add(2,3)
-add = (a, b) => a + b;
+// console.log(add(2, 3));
+// function add(a, b) {
+//   return a + b;
+// }
+// const add; // undefined
+// add(2, 3)
+// add = (a, b) => a + b;
