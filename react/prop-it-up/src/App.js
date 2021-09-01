@@ -1,6 +1,5 @@
 import './App.css';
-import HeaderComponent from './components/HeaderComponent';
-import MyNewComponent from './components/MyNewComponent';
+
 import PersonCard from './components/PersonCardComponent';
 
 function App() {
