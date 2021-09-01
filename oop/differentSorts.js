@@ -1,18 +1,17 @@
-/* eslint-disable no-unused-vars */
-// function bubbleSort(array) {
-//   const arr = [...array];
-//   for (let i = 0; i < arr.length - 1; i++) {
-//     for (let j = 0; j < arr.length - 1 - i; j++) {
-//       if (arr[j] > arr[j + 1]) {
-//         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
-//       }
-//     }
-//   }
-//   return arr
-// }
-// const arr = [500, 250, 2, 340, 420, 10, 11, 2, 1]
-// console.log(bubbleSort(arr))
-// console.log(arr)
+const arr = [38, 27, 43, 3, 9, 82, 10];
+const oneToTen = [10, 6, 5, 3, 8, 9, 1, 4, 2, 7]
+
+function bubbleSort(array) {
+  const arr = [...array];
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+      }
+    }
+  }
+  return arr
+}
 
 
 /**
@@ -33,12 +32,8 @@ function selectionSort(array) {
   }
   return arr
 }
-const arr = [1, 400, 200, 300, 3, 0, 5, 4];
-// console.log(selectionSort(arr))
 
-/**
- *
- */
+
 function insertionSort(array) {
   for (let i = 1; i < array.length; i++) {
     for (let j = i; j > 0; j--) {
@@ -53,40 +48,56 @@ function insertionSort(array) {
   return array;
 }
 
-function insertionSortSwap(nums) {
-  // first sorted
-  for (let i = 1; i < nums.length; i++) {
-    for (let j = i; j > 0; j--) {
-      if (nums[j] < nums[j-1]) {
-        let temp = nums[j];
-        nums[j] = nums[j-1];
-        nums[j-1] = temp;
-      }
+
+const merge = (arr, left, right) => {
+  let i = 0
+  let l = 0
+  let r = 0
+  while (l < left.length && r < right.length) {
+    if (left[l] <= right[r]) {
+      arr[i] = left[l]
+      l++
+    } else {
+      arr[i] = right[r]
+      r++
     }
+    i++
   }
-  return nums;
+  while (l < left.length) {
+    arr[i] = left[l]
+    l++
+    i++
+  }
+  while (r < right.length) {
+    arr[i] = right[r]
+    r++
+    i++
+  }
+  return arr
 }
 
-console.log(insertionSortSwap(arr));
-
-function insertionSortShift(nums) {
-  //consider the first item is already sorted
-  for (var indexCompared = 0; indexCompared < nums.length; indexCompared++) {
-    // take whatever the current value of the index at i (one) and store it as a variable
-    var currentValueBeingCompared = nums[indexCompared];
-    var leftIndex = indexCompared - 1;
-    // continue to compare it to the prior index, while it is smaller than the prior value, swap it
-    while (nums[leftIndex] > currentValueBeingCompared) {
-      if (leftIndex > 0) {
-        nums[leftIndex + 1] = currentValueBeingCompared;
-        leftIndex--;
-      }
-    }
-    //swap with the current value
-    nums[leftIndex + 1] = currentValueBeingCompared;
+/**
+ * Sorts the given nums in-place by dividing the array in half recursively until only one element exists then begins merging
+ * and sorting both halves then merging them.
+ * Best: O(n*log*n)
+ * Average: O(n*log*n)
+ * Worst: O(n*log*n)
+ * @param {Array<number>} nums
+ * @returns {Array<number>} The given nums after being sorted.
+ */
+const mergeSort = (arr) => {
+  if (arr.length < 2) {
+    return arr;
   }
-  //return the array nums
-  return nums;
+  let mid = Math.floor(arr.length / 2)
+  let left = arr.slice(0, mid)
+  let right = arr.slice(mid, arr.length)
+  mergeSort(left);
+  mergeSort(right);
+  merge(arr, left, right)
+  return arr;
 }
+console.log(mergeSort(oneToTen))
 
-// mergeSort, partition, quickSort, radixSort
+const factorial = (n) => n == 1 || n == 0 ? 1 : n * factorial(n - 1);
+

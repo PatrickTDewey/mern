@@ -42,5 +42,5 @@ console.log(poisonNames);
 const firstTypeFlying = pokémon.filter(p => p.types.length > 1 && p.types[1] === "flying").map(p => p.types[0])
 console.log(firstTypeFlying);
 const normalTypeCount = pokémon.filter(p => p.types[0] === "normal").map(p => p = 1).reduce((a, b) => a + b)
-console.log(normalTypeCount);
+console.log(normalTypeCount);[]
 
