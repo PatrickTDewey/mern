@@ -13,7 +13,6 @@ function bubbleSort(array) {
   return arr
 }
 
-
 /**
  *
  * @param { Array<number> } array
@@ -33,7 +32,6 @@ function selectionSort(array) {
   return arr
 }
 
-
 function insertionSort(array) {
   for (let i = 1; i < array.length; i++) {
     for (let j = i; j > 0; j--) {
@@ -47,7 +45,6 @@ function insertionSort(array) {
   }
   return array;
 }
-
 
 const merge = (arr, left, right) => {
   let i = 0
@@ -101,3 +98,29 @@ console.log(mergeSort(oneToTen))
 
 const factorial = (n) => n == 1 || n == 0 ? 1 : n * factorial(n - 1);
 
+let myArray = [1, 2, 9, 600, 5, 8, 9000, -2, 6, 4, 3, 10, 70, 300];
+
+const partition = (array, left, right) => {
+  let pivot = array[Math.floor(Math.random() * (right - left) + 1) + left]; // random number between left & arr.length - 1
+  while (left < right) {
+    while (array[left] < pivot) {
+      left++;
+    }
+    while (array[right] > pivot) {
+      right--;
+    }
+    [array[left], array[right]] = [array[right], array[left]]
+  }
+  return right;
+}
+
+const quickSort = (array, left = 0, right = array.length - 1) => {
+  let pivot = partition(array, left, right);
+  if (left <= right) {
+    quickSort(array, left, pivot - 1);
+    quickSort(array, pivot + 1, right);
+  }
+
+}
+console.log(quickSort(myArray));
+console.log(myArray);

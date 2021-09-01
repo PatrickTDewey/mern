@@ -1,12 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-param-reassign */
-/* eslint-disable max-len */
-/* eslint-disable prefer-const */
 let myArray = [1, 2, 9, 600, 5, 8, 9000, -2, 6, 4, 3, 10, 70, 300];
 
 const partition = (array, left, right) => {
-  let pivot = array[Math.floor(Math.random() * (right - left) + 1) + left]; // random number between 0 - arr.length
+  let pivot = array[Math.floor(Math.random() * (right - left) + 1) + left]; // random number between left & arr.length - 1
   while (left < right) {
     while (array[left] < pivot) {
       left++;
@@ -14,9 +9,7 @@ const partition = (array, left, right) => {
     while (array[right] > pivot) {
       right--;
     }
-    let temp = array[left];
-    array[left] = array[right]
-    array[right] = temp;
+    [array[left], array[right]] = [array[right], array[left]]
   }
   return right;
 }
