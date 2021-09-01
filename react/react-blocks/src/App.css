@@ -1,8 +1,10 @@
 .App {
+  background: #eee;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr 2fr 1fr;
   gap: 1em;
-  padding:5px 5%;
+  padding:10px;
+  margin: 0 2%;
   text-align: center;
 }
