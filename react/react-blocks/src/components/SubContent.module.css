@@ -1,0 +1,5 @@
+.subGrid{
+    background: yellow;
+    grid-row: 1 / 2;
+    grid-auto-columns: auto;
+}

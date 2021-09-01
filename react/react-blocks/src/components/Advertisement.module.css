@@ -1,0 +1,7 @@
+.advertisement {
+    color: #eee;
+    grid-row: 2/3;
+    grid-column: 1/ 4;
+    background:mediumslateblue;
+
+}
