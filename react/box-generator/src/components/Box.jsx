@@ -1,10 +1,12 @@
 import React from 'react'
 
 const Box = (props) => {
+    const { boxStyle } = props
     return (
-        
-        <div className="box" style={props.boxStyle}>
-
+        <div className="boxes">
+            {
+                boxStyle ? <div className="box" style={boxStyle} ></div> : null
+            }
         </div>
     )
 }
