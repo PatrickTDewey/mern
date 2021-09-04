@@ -44,7 +44,7 @@ const Form = (props) => {
                 <input type="text" name="color" id="color" onChange={inputInfo} value={inputState.background} />
             </div>
             <div className="form-group">
-                <label htmlFor="height">Height:</label>
+                <label htmlFor="height">Size: (L x W)</label>
                 <input type="number" name="height" id="height" onChange={inputInfo} value={inputState.height} />
             </div>
             <div className="form-group">
