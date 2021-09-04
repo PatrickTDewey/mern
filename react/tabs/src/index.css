@@ -25,12 +25,14 @@ button.false {
   background: #eee;
   font-weight: 400;
   color: black;
+  transition: background 100ms ease-in-out;
   
 }
 button.true{
   background: #000505;
   color: white;
   font-weight: 600;
+  transition: background 700ms ease-in;
 }
 .tab {
   display: flex;
