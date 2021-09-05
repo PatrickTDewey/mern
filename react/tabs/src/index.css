@@ -32,7 +32,7 @@ button.true{
   background: #000505;
   color: white;
   font-weight: 600;
-  transition: background 700ms ease-in;
+  transition: background 700ms ease-out;
 }
 .tab {
   display: flex;
