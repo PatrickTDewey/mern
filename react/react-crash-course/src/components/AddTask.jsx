@@ -26,7 +26,6 @@ const AddTask = ({ addTask }) => {
             addTask(form)
             setForm({ text: '', day: '', reminder: false })
         }
-
     }
     const { text, day, reminder } = form
     const { text: textError, day: dayError } = formErrors

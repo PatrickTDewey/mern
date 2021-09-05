@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import AddItem from './components/AddItem'
 import List from './components/List'
 const initialState = [{
@@ -16,8 +16,11 @@ const initialState = [{
 },
 ]
 function App() {
-  const [list, setList] = useState(initialState)
-
+  const localData = localStorage.getItem('list');
+  const [list, setList] = useState(localData ? JSON.parse(localData) : initialState)
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list))
+  },[list])
   const add = (input) => {
     let {text} = input 
     let item = {

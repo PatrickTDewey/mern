@@ -31,15 +31,13 @@ function App() {
   }
   const toggleReminder = (e, id) => {
     let setReminders = [...tasks]
-
     setTasks(setReminders.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task))
   }
-
   const addTask = (task) => {
-      let updatedTasks = [...tasks]
-      let newTask = { id: tasks[tasks.length - 1].id + 1, ...task }
-      updatedTasks.push(newTask)
-      setTasks(updatedTasks)
+    let updatedTasks = [...tasks]
+    let newTask = { id: tasks[tasks.length - 1].id + 1, ...task }
+    updatedTasks.push(newTask)
+    setTasks(updatedTasks)
 
   }
   return (
