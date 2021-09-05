@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import AddItem from './components/AddItem'
 import List from './components/List'
+import ListContext from './context/ListContext';
 const initialState = [{
   id: 1,
   text: 'Take out the trash.',
@@ -40,8 +41,10 @@ function App() {
   return (
     <div className="container">
       <h1>To Do List</h1>
-      <AddItem add={add}/>
-      <List list={list} onUpdate={updateItem} onDelete={deleteItem}/>
+      <ListContext.Provider value={list}>
+        <AddItem add={add}/>
+        <List list={list} onUpdate={updateItem} onDelete={deleteItem}/>
+      </ListContext.Provider>
     </div>
   );
 }

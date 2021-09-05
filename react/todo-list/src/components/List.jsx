@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types'
 import Item from './Item'
+import { useContext } from 'react'
+import ListContext from '../context/ListContext'
 
-const List = ({list, onUpdate, onDelete}) => {
+const List = ({ onUpdate, onDelete}) => {
+    const list = useContext(ListContext)
     return (
         <div className="list">
             {
@@ -11,7 +14,6 @@ const List = ({list, onUpdate, onDelete}) => {
     )
 }
 List.propTypes = {
-    list: PropTypes.array,
     onUpdate: PropTypes.func,
     onDelete: PropTypes.func,
 }
