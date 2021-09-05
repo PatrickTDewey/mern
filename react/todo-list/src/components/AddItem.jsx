@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import Button from './Button'
 import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import ListContext from '../context/ListContext'
 
-const AddItem = ({ add }) => {
+const AddItem = () => {
+    const listContext = useContext(ListContext)
+    const {list , setList} = listContext
     const [input, setInput] = useState({ text: '' })
     const [inputError, setInputError] = useState(false)
     const clickHandler = (e) => {
@@ -16,10 +20,18 @@ const AddItem = ({ add }) => {
             setInputError(bool)
             setInput({ ...input })
             add({ ...input })
+            setInput({text: ''})
         }
-
-
     }
+    const add = (input) => {
+        let {text} = input 
+        let item = {
+          id: list.length + 1,
+          text,
+          completed: false
+        }
+        setList([...list, item])
+      }
     const { text } = input
     return (
         <div className="box">

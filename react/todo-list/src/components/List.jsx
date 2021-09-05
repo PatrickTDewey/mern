@@ -4,11 +4,19 @@ import { useContext } from 'react'
 import ListContext from '../context/ListContext'
 
 const List = ({ onUpdate, onDelete}) => {
-    const list = useContext(ListContext)
+    const listContext = useContext(ListContext)
+    const {list, setList} = listContext
+    const updateItem = (e, id) => {
+        let updateList = [...list]
+        setList(updateList.map((item) => item.id === id ? {...item, completed: !item.completed }: item))
+      }
+      const deleteItem = (e, id) => {
+        setList([...list].filter((item) => item.id !== id))
+      }
     return (
         <div className="list">
             {
-                list.map((item) => <Item item={item} key={item.id} onUpdate={onUpdate} onDelete={onDelete}/>)
+                list.map((item) => <Item item={item} key={item.id} onUpdate={updateItem} onDelete={deleteItem}/>)
             }
         </div>
     )

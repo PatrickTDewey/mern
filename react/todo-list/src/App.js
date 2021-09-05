@@ -22,28 +22,13 @@ function App() {
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list))
   },[list])
-  const add = (input) => {
-    let {text} = input 
-    let item = {
-      id: list.length + 1,
-      text,
-      completed: false
-    }
-    setList([...list, item])
-  }
-  const updateItem = (e, id) => {
-    let updateList = [...list]
-    setList(updateList.map((item) => item.id === id ? {...item, completed: !item.completed }: item))
-  }
-  const deleteItem = (e, id) => {
-    setList([...list].filter((item) => item.id !== id))
-  }
+  
   return (
     <div className="container">
       <h1>To Do List</h1>
-      <ListContext.Provider value={list}>
-        <AddItem add={add}/>
-        <List list={list} onUpdate={updateItem} onDelete={deleteItem}/>
+      <ListContext.Provider value={{list , setList}}>
+        <AddItem />
+        <List />
       </ListContext.Provider>
     </div>
   );
