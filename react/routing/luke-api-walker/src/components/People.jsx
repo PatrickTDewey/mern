@@ -20,9 +20,8 @@ const People = (props) => {
       }, [id])
       const clickHandler = (e) => {
         e.preventDefault()
-        let string = 'https://swapi.dev/api/planets/'
-        console.log(string.length);
-        let pid = homeWorld.url.slice(30, homeWorld.length);
+        console.log(homeWorld.length);
+        let pid = homeWorld.url.slice(30);
         history.push(`/planets/${pid}`)
         history.goForward()
     }
