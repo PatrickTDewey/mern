@@ -11,8 +11,7 @@ const Form = ({ onSubmit }) => {
     const handleSubmit = (e) => {
         const data = {...input}
         e.preventDefault()
-        onSubmit({ ...input })
-        data.search === 'people' ? history.push(`/people/${data.id}`) : history.push(`/planets/${data.id}`)
+        data.search === 'people' ? history.push(`/people/${input.id}`) : history.push(`/planets/${input.id}`)
         history.goForward()
     }
     return (
