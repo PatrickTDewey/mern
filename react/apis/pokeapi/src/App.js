@@ -1,6 +1,6 @@
 import NameList from './components/NameList'
 import Button from './components/Button'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 function App() {
   const [pokémon, setPokémon] = useState([])

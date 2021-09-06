@@ -1,4 +1,3 @@
-import React , {useState} from 'react'
 import Name from './Name'
 const NameList = ({mons}) => {
     
