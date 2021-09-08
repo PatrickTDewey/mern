@@ -6,13 +6,11 @@ import {
 import People from './components/People'
 import Planets from './components/Planets'
 import Form from './components/Form'
-import Fetch from "./components/Fetch";
 
 
 function App() {
   return (
     <div className="container">
-      <Fetch/>
       <BrowserRouter>
       <Form />
         <Switch>

@@ -8,6 +8,7 @@ const Form = ({ onSubmit }) => {
         id: 0,
     })
     const history = useHistory()
+    console.log(history);
     const handleSubmit = (e) => {
         const data = {...input}
         e.preventDefault()
