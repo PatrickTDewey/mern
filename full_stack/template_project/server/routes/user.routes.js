@@ -1,0 +1,5 @@
+const UserController = require('../controllers/user.controller');
+module.exports = function(app){
+  app.get('/api/users', UserController.index);
+  app.post('/api/users/new', UserController.newUser);
+}
