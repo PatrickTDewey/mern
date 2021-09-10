@@ -1,27 +1,21 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
-const ProductForm = ({ onAdd }) => {
-    const [form, setForm] = useState({
+import {Link} from 'react-router-dom'
+const ProductForm = (props) => {
+    const { initialData } = props
+    const [form, setForm] = useState(initialData ? initialData : { 
         title: '',
         price: 0,
         description: ''
     });
-
+    
+    const {onSubmit} = props
     const onSubmitHandler = e => {
-        // prevent default behavior of the submit
         e.preventDefault();
-        // make a post request to create a new user
-        axios.post("http://localhost:8000/api/products/new", { title: form.title, price: form.price, description: form.description })
-            .then(res => {
-                console.log(res)
-                onAdd(res.data)
-            })
-            .catch(err => console.log(err))
+        onSubmit(form)
         setForm({
-            title: '',
+            title: "",
             price: 0,
-            description: ''
+            description: "",
         })
     }
     return (
@@ -41,6 +35,7 @@ const ProductForm = ({ onAdd }) => {
                     <label htmlFor="description" className="form-label">Description:</label>
                 </div>
                 <input type="submit" value="Submit Product" className="btn btn-primary p-2" />
+                <Link className="btn btn-link" to="/">Home</Link>
             </form>
         </div>
     )

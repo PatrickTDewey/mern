@@ -13,17 +13,22 @@ const Main = () => {
       })
       .catch(err => console.log('Main Error', err))
   }, []);
-  const onAdd = (data) => {
-    setProducts([...products, data])
+  const onAdd = (form) => {
+    const {title, description, price} = form
+    axios.post(`http://localhost:8000/api/products/new`, {title, price, description })
+            .then(res => {
+              setProducts([...products, res.data])
+            })
+            .catch(err => console.log(err))
   }
-
+  
   const onDelete = (id) => {
     setProducts([...products].filter(item => item._id !== id ))
   }
   return (
     <div className="products">
       <h1>Products:</h1>
-      <ProductForm onAdd={onAdd}/>
+      <ProductForm onSubmit={onAdd}/>
       {loaded && <ListProducts onDelete={onDelete} products={products}/>}
     </div>
   )
