@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 const Detail = () => {
     const [product, setProduct] = useState()
@@ -28,8 +28,8 @@ const Detail = () => {
                         <p>Description: {product.description}</p>
                         <div className="row">
 
-                            <button className="btn btn-primary col me-3" onClick={clickHandler}>Go back</button>
-                            <button className="btn btn-success col ms-3" onClick={updateClick}>Update</button>
+                            <Link className="btn btn-link col me-3" to={`/`}>Go back</Link>
+                            <Link className="btn btn-link col ms-3" to={`/products/update/${product._id}`}>Update</Link>
                         </div>
                     </div> : null
             }

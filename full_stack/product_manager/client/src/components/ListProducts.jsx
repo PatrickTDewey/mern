@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 const ListProducts = ({ products, onDelete }) => {
     const history = useHistory()
     const handleClick = (e, id) => {
         e.preventDefault();
         history.push(`/products/view/${id}`)
-        history.goForward()
+        // history.goForward()
 
     }
     const deleteProduct = (e,id) => {
@@ -18,15 +18,15 @@ const ListProducts = ({ products, onDelete }) => {
     return (
         <>
             {products ? products.map((product, i) =>
-                <ul className="list-unstyled" key={i}>
+                <ul className="list-unstyled mt-5" key={i}>
                     <li  >{product.title}</li>
                     <li>${product.price}</li>
                     <li>{product.description}</li>
                     <li>
                         <div className="row">
 
-                            <button className="btn btn-success col me-3" onClick={(e) => handleClick(e, product._id)}>View Product</button>
-                            <button className="btn btn-danger col ms-3" onClick={(e) => deleteProduct(e, product._id)} >Delete</button>
+                            <Link className="btn btn-link col me-3" to={`/products/view/${product._id}`}>View Product</Link>
+                            <Link className="btn btn-link col ms-3" onClick={(e) => deleteProduct(e, product._id)} >Delete</Link>
                         </div>
                     </li>
                     <hr></hr>

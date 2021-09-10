@@ -5,7 +5,7 @@ import Detail from './views/Detail'
 import UpdateProduct from './views/UpdateProduct';
 function App() {
   return (
-    <div className="App App-header">
+    <div className="container">
       <BrowserRouter>
         <Switch>
           <Route exact path="/">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 import axios from 'axios';
 
 const UpdateForm = ({id}) => {
@@ -38,6 +38,7 @@ const UpdateForm = ({id}) => {
                     <label htmlFor="description" >Description:</label>
                 </div>
                 <input type="submit" value="Submit Product" className="btn btn-primary p-2"/>
+                <Link to="/" className="ms-5 btn-link">Home</Link>
             </form>
         </div>
     )

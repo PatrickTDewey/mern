@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams} from 'react-router-dom'
 import UpdateForm from '../components/UpdateForm'
 
 const UpdateProduct = () => {
@@ -7,7 +7,8 @@ const UpdateProduct = () => {
     return (
         <div>
             <h1>Update Product</h1>
-            <UpdateForm id={id}/>
+
+            <UpdateForm id={id} className="row"/>
 
         </div>
     )
