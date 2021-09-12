@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const AuthorSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        min: [3, "First Name must be atleast 3 characters."],
-        max: [20, "First Name must not be greater than 20 characters."],
+        minlength: [3, "First Name must be atleast 3 characters."],
+        maxlength: [20, "First Name must not be greater than 20 characters."],
         required:[
             true,
             "First Name is a required field."
@@ -11,8 +11,8 @@ const AuthorSchema = new mongoose.Schema({
     },
     lastName: {
         type: String,
-        min: [3, "Last Name must be atleast 3 characters."],
-        max: [20, "Last Name must not be greater than 20 characters."],
+        minlength: [3, "Last Name must be atleast 3 characters."],
+        maxlength: [20, "Last Name must not be greater than 20 characters."],
         required:[
             true,
             "Last Name is a required field."

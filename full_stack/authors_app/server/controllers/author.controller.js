@@ -16,7 +16,9 @@ module.exports.newAuthor = (req, res) => {
     const { firstName, lastName, date_of_birth, date_of_death } = req.body;
     Author.create({ firstName, lastName, date_of_birth, date_of_death })
         .then(author => res.json(author))
-        .catch(err => res.status(400).json(err))
+        .catch(err => {
+            res.status(400).json(err)
+        })
 
 }
 

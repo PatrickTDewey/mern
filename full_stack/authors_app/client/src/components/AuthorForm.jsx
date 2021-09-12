@@ -4,7 +4,8 @@ import {
     FormGroup,
     InputLabel,
     OutlinedInput,
-    Box
+    Box,
+    Typography
 } from '@material-ui/core'
 import { useState } from 'react'
 import CustomButton from './Button'
@@ -25,7 +26,7 @@ const styles = {
 
 }
 
-const AuthorForm = ({onSubmit, initialData}) => {
+const AuthorForm = ({onSubmit, initialData, errors}) => {
     const [input, setInput] = useState(initialData ? initialData:{
         firstName:'',
         lastName:'',
@@ -39,12 +40,14 @@ const AuthorForm = ({onSubmit, initialData}) => {
                 
                 <form >
                     <FormGroup>
+                       {errors.firstName ? <Typography color="secondary">{errors.firstName}</Typography> : null}
                         <FormControl  style={styles.input}>
                             <InputLabel style={styles.label}>First Name</InputLabel>
                             <OutlinedInput type="text" id="firstName" value={input.firstName} onChange={(e) => setInput({ ...input, firstName: e.target.value })} />
                         </FormControl>
                     </FormGroup>
                     <FormGroup>
+                    {errors.lastName ? <Typography color="secondary">{errors.lastName}</Typography> : null}
                         <FormControl  style={styles.input}>
                             <InputLabel style={styles.label}>Last Name:</InputLabel>
                             <OutlinedInput type="text" id="lastName" value={input.lastName} onChange={(e) => setInput({ ...input, lastName: e.target.value })} />
