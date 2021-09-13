@@ -28,8 +28,6 @@ const AuthorTable = () => {
           .catch(err => console.log(err))
     }
     return (
-        // if authors in state, render table otherwise render null
-        authors ?
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="author's table">
                     <TableHead>
@@ -56,7 +54,7 @@ const AuthorTable = () => {
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer> : null
+            </TableContainer>
     )
 }
 
