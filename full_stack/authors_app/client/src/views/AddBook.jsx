@@ -1,18 +1,20 @@
-import AuthorForm from '../components/AuthorForm';
+import BookForm from '../components/AuthorForm';
 import CustomButton from '../components/Button';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import { useState } from 'react';
 import axios from 'axios';
-const AddAuthor = () => {
+const AddBook = () => {
     const history = useHistory();
     const [errors, setErrors] = useState([{
         firstName:'',
         lastName:'',
     }
     ]);
-    const addAuthor = (author) => {
-        const { firstName, lastName, date_of_birth, date_of_death } = author
+    const {author_id} = useParams()
+    const addBook = (book) => {
+        const { title, pageNum } = book;
+        const 
         axios.post('http://localhost:8000/api/authors/new', { firstName, lastName, date_of_birth, date_of_death })
             .then(res => {
                 console.log(res);
@@ -37,4 +39,4 @@ const AddAuthor = () => {
     );
 };
 
-export default AddAuthor;
+export default AddBook;

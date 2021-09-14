@@ -10,15 +10,15 @@ module.exports.getBook = (req, res) => {
         .catch(err => res.json(err))
 }
 module.exports.newBook = (req, res) => {
-    const { title, pageNum, author} = req.body;
-    
-    Book.create({title, pageNum, author})
+    const { author_id } = req.params;
+    const { title, pageNum} = req.body;
+    Book.create({title, pageNum, author_id})
         .then(book => res.json(book))
         .catch(err => res.status(400).json(err))
 }
 module.exports.updateBook = (req, res) => {
-    const { title, page_num } = req.body
-    Book.findOneAndUpdate({ _id: req.params.id }, { title, page_num }, { new: true, runValidators: true })
+    const { title, pageNum } = req.body
+    Book.findOneAndUpdate({ _id: req.params.id }, { title, pageNum }, { new: true, runValidators: true })
         .then(updatedBook => res.json(updatedBook))
         .catch(err => res.status(400).json(err))
 }

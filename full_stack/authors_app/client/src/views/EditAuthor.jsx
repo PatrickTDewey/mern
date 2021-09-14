@@ -7,6 +7,11 @@ import { useParams, useHistory } from "react-router-dom"
 const EditAuthor = () => {
     const { id } = useParams()
     const [initialData, setInitalData] = useState();
+    const [errors, setErrors] = useState([{
+        firstName:'',
+        lastName:'',
+    }
+    ]);
     const history = useHistory();
     useEffect(() => {
         axios.get('http://localhost:8000/api/authors/' + id)
@@ -25,7 +30,7 @@ const EditAuthor = () => {
     return (
         <>
             <Typography variant="h3" component="h3" align="center">Edit Author</Typography>
-            {initialData && <AuthorForm initialData={initialData} onSubmit={onSubmit}/>}
+            {initialData && <AuthorForm errors={errors} initialData={initialData} onSubmit={onSubmit}/>}
             <CustomButton text="Home" color="default" cb={() => history.push('/')} />
         </>
     )

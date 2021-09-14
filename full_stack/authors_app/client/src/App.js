@@ -3,6 +3,7 @@ import Main from "./views/Main";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import AddAuthor from './views/AddAuthor'
 import EditAuthor from "./views/EditAuthor";
+import AddBook from "./views/AddBook";
 
 function Copyright() {
   return (
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path='/authors/edit/:id'>
             <EditAuthor/>
+          </Route>
+          <Route path='/books/:author_id/new'>
+            <AddBook/>
           </Route>
         </Switch>
         <Copyright />

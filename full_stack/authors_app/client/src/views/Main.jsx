@@ -1,5 +1,5 @@
 import { Typography, Box } from "@material-ui/core";
-import AuthorTable from "../components/AuthorTable";
+import DisplayTable from "../components/DisplayTable";
 import { useHistory } from 'react-router-dom'
 import CustomButton from "../components/Button";
 
@@ -12,7 +12,7 @@ const Main = () => {
                 <Typography variant="h1" component="h1" align="center" gutterBottom>
                     Authors App
                 </Typography>
-                <AuthorTable />
+                <DisplayTable />
             </Box>
             <CustomButton text="Add Author" color="primary" cb={() => history.push('/authors/new')}></CustomButton>
         </>
