@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom'
 import axios from 'axios';
+import '../index.css'
 
 const PlayerForm = () => {
     const [form, setForm] = useState({
@@ -8,6 +9,7 @@ const PlayerForm = () => {
         lastName: '',
         position: '',
     });
+    
     
     const history = useHistory();
     const onSubmitHandler = e => {
@@ -21,7 +23,7 @@ const PlayerForm = () => {
         history.push('/')
     }
     return (
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} >
             <div className="form-floating mb-3">
                 <input type="text" className="form-control" name="firstName" id="firstName" placeholder="first name" value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
                 <label htmlFor="firstName">First Name:</label>
