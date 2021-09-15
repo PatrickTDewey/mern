@@ -26,23 +26,28 @@ const Chat = ({ name }) => {
     const [input, setInput] = useState('')
     const [messages, setMessages] = useState([])
     const [flipper, setFlipper] = useState(false);
+    // const [socketID, setSocketID] = useState([])
     useEffect(() => {
         socket.on('welcome', data => {
+        //     // setSocketID(prevID => {
+        //     //     return[data,  ...prevID]
             console.log(data);
+        //     // })
         })
-        socket.on('message', data => {
+        return () => socket.disconnect(true);
+    }, [flipper])
+    const addMessage = (e) => {
+        e.preventDefault()
+        socket.emit('message', input)
+        socket.on('message', msg => {
             setMessages(prevMessages => {
-                return [data, ...prevMessages]
+                console.log('updated message');
+                return [msg, ...prevMessages]
             })
             setInput('')
         })
-        return () => socket.disconnect(true);
-    }, [flipper, socket])
-    const addMessage = (e) => {
-        e.preventDefault()
-        
-        socket.emit('message',input)
-        setFlipper(true)
+        setMessages([input, ...messages])
+        setFlipper(!flipper)
         
     }
     return (

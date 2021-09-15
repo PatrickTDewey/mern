@@ -14,14 +14,18 @@ const io = require('socket.io')(server, {cors: true})
 io.on("connection", socket => {
     // NOTE: each client that connects gets their own socket id!
     console.log(socket.id);
+    const user = {
+        
+    }
     console.log('Nice to meet you');
     // if this is logged in our node terminal, that means a new client
     // has successfully completed the handshake
-    socket.emit('welcome', 'Hi There')
+    socket.emit('welcome', socket.id)
     // We add all of our additional event listeners
     // right inside this function.
+    socket.on('joinRoom', name => console.log(name))
     // NOTE: "connection" is a built-in event listener
-    socket.on("event_from_client", data => {socket.emit('Welcome', 'this is my welcome string')
+    socket.on("event_from_client", data => {
         socket.broadcast.emit("send_data_to_all_other_clients", data);
         
     });

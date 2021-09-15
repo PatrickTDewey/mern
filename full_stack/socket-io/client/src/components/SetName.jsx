@@ -9,6 +9,7 @@ import {
     Button
 } from '@material-ui/core'
 import { useState } from 'react'
+import io from 'socket.io-client'
 const styles = {
     button: {
         marginTop: '10px'
@@ -22,8 +23,9 @@ const styles = {
 }
 const SetName = ({ onSubmit }) => {
     const [input, setInput] = useState('')
-
+    const [socket] = useState(() => io(':8000'))
     const addName = (e) => {
+        socket.emit('joinRoom', input)
         e.preventDefault()
         console.log(e);
         onSubmit(input)
