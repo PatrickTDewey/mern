@@ -1,6 +1,7 @@
 const { Author } = require('../models/author.model')
 // const { Book } = require('../models/book.model')
 module.exports.getAllAuthors = (req, res) => {
+    // sort by last name
     Author.find().sort({lastName: 'asc'})
         .then(authors => res.json(authors))
         .catch(err => res.json(err))
