@@ -22,14 +22,15 @@ const styles = {
         padding: '5px'
     },
     ul: {
-        display:'flex',
-        flexDirection:'column-reverse',
-        
+        display: 'flex',
+        flexDirection: 'column-reverse',
+
     }
 }
 const Chat = ({ name }) => {
     const [socket] = useState(() => io(':8000'))
     const [input, setInput] = useState('')
+    // const [history, setHistory] = useState()
     const [messages, setMessages] = useState([])
     useEffect(() => {
         socket.on('welcome', data => {
@@ -40,22 +41,28 @@ const Chat = ({ name }) => {
                 return [data, ...prevMessages]
             })
         })
-        socket.emit('user_join', {name:'server', msg: `${name} has joined chat.`})
-        return () => {socket.disconnect(true)};
+        socket.on('history', chatHistory => {
+            if (chatHistory.length >= 1) {
+                setMessages(prevMessages => {
+                    return [...chatHistory, prevMessages]
+                })
+            }
+        })
+        socket.emit('user_join', { name: 'server', msg: `${name} has joined chat.` })
+        return () => { socket.disconnect(true) };
     }, [socket, name])
     const addMessage = (e) => {
         e.preventDefault()
-        setMessages([{name, msg: input}, ...messages])
-        socket.emit('message', {name, msg: input})
+        setMessages([{ name, msg: input }, ...messages])
+        socket.emit('message', { name, msg: input })
         setInput('')
-        
+
     }
     return (
         <div>
-            <p>{name} has joined the chat</p>
             <Box my={4} component={Paper} style={styles.box}>
                 <ul className="ul">
-                {messages.length >= 1 ? messages.map(message => <li><strong>{message.name}:</strong> {message.msg}</li>):null}
+                    {messages.length >= 1 ? messages.map(message => <li><strong>{message.name}:</strong> {message.msg}</li>) : null}
                 </ul>
                 <FormGroup>
                     {/* {errors.firstName ? <Typography color="secondary">{errors.firstName}</Typography> : null} */}
