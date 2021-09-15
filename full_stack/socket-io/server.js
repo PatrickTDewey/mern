@@ -17,7 +17,7 @@ io.on("connection", socket => {
     console.log('Nice to meet you');
     // if this is logged in our node terminal, that means a new client
     // has successfully completed the handshake
-    socket.emit('welcome', 'There is no such thing as bad coffee.')
+    socket.emit('welcome', 'Hi There')
     // We add all of our additional event listeners
     // right inside this function.
     // NOTE: "connection" is a built-in event listener

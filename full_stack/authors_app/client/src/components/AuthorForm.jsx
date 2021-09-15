@@ -37,8 +37,6 @@ const AuthorForm = ({onSubmit, initialData, errors}) => {
     return (
         <Box style={styles.box}>
             <Paper elevation={3} style={styles.paper} >
-                
-                <form >
                     <FormGroup>
                        {errors.firstName ? <Typography color="secondary">{errors.firstName}</Typography> : null}
                         <FormControl  style={styles.input}>
@@ -64,7 +62,6 @@ const AuthorForm = ({onSubmit, initialData, errors}) => {
                     <FormGroup>
                         <CustomButton color="primary" text="Add Author" cb={() => onSubmit(input)}/>
                     </FormGroup>
-                </form>
             </Paper>
         </Box >
     )

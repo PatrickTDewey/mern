@@ -1,14 +1,14 @@
-import './App.css';
 import Main from './views/Main'
-import Chat from './components/Chat'
+import NavBar from './views/NavBar';
+import { Container } from "@material-ui/core";
 
 function App() {
-  
+
   return (
-    <div className="App App-header">
+    <Container>
+      <NavBar />
       <Main />
-      <Chat/>
-    </div>
+    </Container>
   );
 }
 

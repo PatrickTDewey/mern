@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import UserForm from '../components/UserForm'
+import Chat from '../components/Chat'
+import SetName from '../components/SetName'
+
 const Main = () => {
-  const [users, setUsers] = useState()
-  useEffect(() => {
-    axios.get("http://localhost:8000/api/users")
-      .then(res => setUsers(res.data))
-  }, []);
+  const [name, setName] = useState()
+  const chooseName = (input) => {
+    setName(input)
+  }
   return (
-    <div className="users">
-      <h1>Users:</h1>
-      {
-        users ? users.map((user, idx) => <p key={idx}>{user.firstName} {user.lastName}</p>) : null
-      }
-      <UserForm />
-    </div>
+     name?<Chat name={name}/>:<SetName onSubmit={chooseName} />
   )
 }
 export default Main
