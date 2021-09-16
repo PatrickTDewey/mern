@@ -44,7 +44,7 @@ const Chat = ({ name }) => {
         socket.on('history', chatHistory => {
             if (chatHistory.length >= 1) {
                 setMessages(prevMessages => {
-                    return [...chatHistory, prevMessages]
+                    return [...chatHistory, ...prevMessages]
                 })
             }
         })
@@ -56,13 +56,12 @@ const Chat = ({ name }) => {
         setMessages([{ name, msg: input }, ...messages])
         socket.emit('message', { name, msg: input })
         setInput('')
-
     }
     return (
         <div>
             <Box my={4} component={Paper} style={styles.box}>
                 <ul className="ul">
-                    {messages.length >= 1 ? messages.map(message => <li><strong>{message.name}:</strong> {message.msg}</li>) : null}
+                    {messages.length >= 1 ? messages.map((message, i) => <li key={i}><strong>{message.name}:</strong> {message.msg}</li>) : null}
                 </ul>
                 <FormGroup>
                     {/* {errors.firstName ? <Typography color="secondary">{errors.firstName}</Typography> : null} */}

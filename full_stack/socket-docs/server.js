@@ -26,7 +26,6 @@ io.on('connection', (socket) => {
         history = [msg, ...history]
         io.emit('message_from_server', msg);
     })
-    
     socket.on('disconnect', () => {
         console.log(`User with id: ${socket.id} disconnected`);
     })
